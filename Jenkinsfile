@@ -18,10 +18,7 @@ pipeline {
             }
             steps {
                 script {
-                   stage('Initialize'){
-                     def dockerHome = tool 'myDocker'
-                     env.PATH = "${dockerHome}/bin:${env.PATH}"
-                     }
+                   
                     app = docker.build("hanhduynguyen/train-schedule")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'

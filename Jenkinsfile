@@ -9,16 +9,18 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
+       stage('Initialize'){
+                     def dockerHome = tool 'myDocker'
+                     env.PATH = "${dockerHome}/bin:${env.PATH}"
+         }
+       
         stage('Build Docker Image') {
             when {
                 branch 'master'
             }
             steps {
                 script {
-                   stage('Initialize'){
-                     def dockerHome = tool 'myDocker'
-                     env.PATH = "${dockerHome}/bin:${env.PATH}"
-                     }
+                   
                     app = docker.build("hanhduynguyen/train-schedule")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'

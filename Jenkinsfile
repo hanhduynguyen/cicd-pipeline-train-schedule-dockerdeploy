@@ -10,7 +10,20 @@ pipeline {
             }
         }
        
-       
+       stage('Build Docker Image') {
+            when {
+                branch 'master'
+               
+            }
+            steps {
+                script {
+                   
+                    app = docker.build("hanhduynguyen/train-schedule")
+                   
+                    
+                }
+            }
+        }
         
         stage('Push Docker Image') {
             when {

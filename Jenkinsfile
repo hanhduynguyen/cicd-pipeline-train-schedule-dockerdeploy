@@ -26,9 +26,7 @@ pipeline {
             }
         }
         
-        stage('Push image') {
-    dockerImage.push()
-  }  
+        
         
     }
 }

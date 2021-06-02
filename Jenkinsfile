@@ -20,9 +20,7 @@ pipeline {
                 script {
                    
                     app = docker.build("hanhduynguyen/train-schedule")
-                    app.inside {
-                        echo 'hello'
-                    }
+                   
                     
                 }
             }
